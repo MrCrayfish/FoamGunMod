@@ -3,8 +3,14 @@ package com.mrcrayfish.foamguns;
 import com.mrcrayfish.foamguns.core.ModItems;
 import com.mrcrayfish.foamguns.entity.EntityFoamDart;
 import com.mrcrayfish.foamguns.proxy.CommonProxy;
+import com.mrcrayfish.guns.client.gui.DisplayProperty;
+import com.mrcrayfish.guns.client.gui.GuiWorkbench;
+import com.mrcrayfish.guns.common.WorkbenchRegistry;
 import com.mrcrayfish.guns.item.AmmoRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -58,5 +64,15 @@ public class FoamGunsMod
     {
         /* Registering projectile factories must be done in the init phase or later. If you do it in preInit, the item will be null. */
         AmmoRegistry.getInstance().registerProjectileFactory(ModItems.FOAM_DART, (world, entityLivingBase, gun) -> new EntityFoamDart(world, entityLivingBase, gun.projectile));
+
+        /* Register new crafting recipes to the workbench */
+        WorkbenchRegistry.registerRecipe(new ItemStack(ModItems.FOAM_DART, 64),
+                new ItemStack(Blocks.SPONGE));
+        WorkbenchRegistry.registerRecipe(new ItemStack(ModItems.ASSAULTER),
+                new ItemStack(Items.IRON_INGOT, 8),
+                new ItemStack(Blocks.CONCRETE, 1, EnumDyeColor.YELLOW.getMetadata()),
+                new ItemStack(Blocks.CONCRETE, 1, EnumDyeColor.LIME.getMetadata()));
+
+        proxy.init();
     }
 }
