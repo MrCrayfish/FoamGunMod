@@ -18,10 +18,10 @@
         "gravity": true
     },
     "sounds": {
-        "fire": "cgm:assault_rifle_fire",
-        "reload": "cgm:pistol_reload",
-        "cock": "cgm:shotgun_fire",
-        "silencedFire": "cgm:rifle_fire_silenced"
+        "fire": "foamguns:item.assaulter.fire",
+        "reload": "foamguns:item.assaulter.reload",
+        "cock": "foamguns:item.assaulter.reload",
+        "silencedFire": "foamguns:item.assaulter.fire"
     },
     "modules": {
         "zoom": {

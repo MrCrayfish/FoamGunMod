@@ -36,7 +36,7 @@ public class ModItems
     @GameRegistry.ObjectHolder(ItemNames.FOAM_DART)
     public static final ItemAmmo FOAM_DART = null;
 
-    public static void register()
+    private static void register()
     {
         /* Registering custom guns. Make sure you create a new gun json for every gun.
          * See "assets/foamguns/guns/assaulter.json" for an example. The json file is where you can

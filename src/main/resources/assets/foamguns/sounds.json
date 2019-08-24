@@ -1,0 +1,8 @@
+{
+    "item.assaulter.fire": {
+        "sounds": [{ "name": "foamguns:item/assaulter/fire" }]
+    },
+    "item.assaulter.reload": {
+        "sounds": [{ "name": "foamguns:item/assaulter/reload" }]
+    }
+}
