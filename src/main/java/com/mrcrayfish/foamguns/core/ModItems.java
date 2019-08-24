@@ -28,15 +28,27 @@ public class ModItems
 {
     private static final List<Item> ITEMS = new ArrayList<>();
 
+    /* Create your items here */
+
     @GameRegistry.ObjectHolder(ItemNames.ASSAULTER)
     public static final Item ASSAULTER = null;
 
     @GameRegistry.ObjectHolder(ItemNames.FOAM_DART)
-    public static final Item FOAM_DART = null;
+    public static final ItemAmmo FOAM_DART = null;
 
     public static void register()
     {
+        /* Registering custom guns. Make sure you create a new gun json for every gun.
+         * See "assets/foamguns/guns/assaulter.json" for an example. The json file is where you can
+         * customize the properties for each of your weapons.
+         *
+         * For example of gun json, see MrCrayfish's Gun Mod repo
+         * https://github.com/MrCrayfish/MrCrayfishGunMod/tree/master/src/main/resources/assets/cgm/guns
+         *
+         * */
         ITEMS.add(new ItemGun(new ResourceLocation(Reference.MOD_ID, "assaulter")).setCreativeTab(FoamGunsMod.TAB));
+
+        /* Registering custom ammo. Make sure you change in your gun json to use your custom ammo if you implement one */
         ITEMS.add(new ItemAmmo(new ResourceLocation(Reference.MOD_ID, "foam_dart")).setCreativeTab(FoamGunsMod.TAB));
     }
 
