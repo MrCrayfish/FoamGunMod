@@ -17,4 +17,7 @@ public class Reference
      * Gun mod installed. It also makes sure that the MrCrayfish's Gun Mod is loaded first before
      * yours is, otherwise you will get missing class exceptions. */
     public static final String DEPENDENCIES = "required-after:cgm@[0.13.1,);";
+
+    public static final String PROXY_CLIENT = "com.mrcrayfish.foamguns.proxy.ClientProxy";
+    public static final String PROXY_SERVER = "com.mrcrayfish.foamguns.proxy.CommonProxy";
 }

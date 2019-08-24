@@ -1,9 +1,18 @@
 package com.mrcrayfish.foamguns;
 
 import com.mrcrayfish.foamguns.core.ModItems;
+import com.mrcrayfish.foamguns.entity.EntityFoamDart;
+import com.mrcrayfish.foamguns.proxy.CommonProxy;
+import com.mrcrayfish.guns.item.AmmoRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /*
  * This is all you need in your mod class to create an addon.
@@ -24,6 +33,16 @@ public class FoamGunsMod
         }
     };
 
+    @SidedProxy(clientSide = Reference.PROXY_CLIENT, serverSide = Reference.PROXY_SERVER)
+    public static CommonProxy proxy;
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID, "foam_dart"), EntityFoamDart.class, Reference.MOD_ID + ".foam_dart", 0, this, 64, 80, true);
+        proxy.preInit();
+    }
+
     /*
      * Uncomment this below if you want make your custom ammo to shoot a custom projectile. A projectile is
      * an entity, so you will need to register it as normally would for an entity.
@@ -34,10 +53,10 @@ public class FoamGunsMod
      * The missile entity is an example of a custom projectile. You can see the example here.
      * https://github.com/MrCrayfish/MrCrayfishGunMod/blob/master/src/main/java/com/mrcrayfish/guns/entity/EntityMissile.java
      */
-
-    /*@Mod.EventHandler
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-        AmmoRegistry.getInstance().registerProjectileFactory(ModItems.FOAM_DART, (world, entityLivingBase, gun) -> new EntityProjectile(world, entityLivingBase, gun.projectile));
-    }*/
+        /* Registering projectile factories must be done in the init phase or later. If you do it in preInit, the item will be null. */
+        AmmoRegistry.getInstance().registerProjectileFactory(ModItems.FOAM_DART, (world, entityLivingBase, gun) -> new EntityFoamDart(world, entityLivingBase, gun.projectile));
+    }
 }
