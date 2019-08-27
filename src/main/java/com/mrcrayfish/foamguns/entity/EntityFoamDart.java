@@ -2,6 +2,7 @@ package com.mrcrayfish.foamguns.entity;
 
 import com.mrcrayfish.foamguns.core.ModItems;
 import com.mrcrayfish.guns.entity.EntityProjectile;
+import com.mrcrayfish.guns.item.ItemGun;
 import com.mrcrayfish.guns.object.Gun;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -21,9 +22,9 @@ public class EntityFoamDart extends EntityProjectile
         super(worldIn);
     }
 
-    public EntityFoamDart(World worldIn, EntityLivingBase shooter, Gun.Projectile projectile)
+    public EntityFoamDart(World worldIn, EntityLivingBase shooter, ItemGun item, Gun modifiedGun)
     {
-        super(worldIn, shooter, projectile);
+        super(worldIn, shooter, item, modifiedGun);
     }
 
     @Override

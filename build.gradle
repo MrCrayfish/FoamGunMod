@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     compile "obfuscate:Obfuscate:0.2.6:1.12.2"
-    compile "mrcrayfishs-gun-mod:Guns:0.13.1:1.12.2"
+    compile "mrcrayfishs-gun-mod:Guns:0.14.0:1.12.2"
 }
 
 processResources {

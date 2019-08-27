@@ -63,7 +63,7 @@ public class FoamGunsMod
     public void init(FMLInitializationEvent event)
     {
         /* Registering projectile factories must be done in the init phase or later. If you do it in preInit, the item will be null. */
-        AmmoRegistry.getInstance().registerProjectileFactory(ModItems.FOAM_DART, (world, entityLivingBase, gun) -> new EntityFoamDart(world, entityLivingBase, gun.projectile));
+        AmmoRegistry.getInstance().registerProjectileFactory(ModItems.FOAM_DART, EntityFoamDart::new);
 
         /* Register new crafting recipes to the workbench */
         WorkbenchRegistry.registerRecipe(new ItemStack(ModItems.FOAM_DART, 64),
